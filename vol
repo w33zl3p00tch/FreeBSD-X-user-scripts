@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Set your sound device's output volume. Takes an integer as argument.
+mixer vol $1:$1 > /dev/null

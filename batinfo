@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Shows remaining charge of the laptop battery and the system uptime.
+
+capacity=$(acpiconf -i 0 | grep "Remaining capacity" | cut -f2 | cut -d"%" -f1)
+remaining=$(acpiconf -i 0 | grep "Remaining time" | cut -f3)
+status=`acpiconf -i 0 | grep State | cut -f4 | cut -f1`
+
+up=$(uptime | cut -d "," -f1 | cut -d"p" -f2)
+
+if [[ "$status" = "discharging" ]]; then
+	remaining="| $remaining remain |"
+	status="dsc"
+elif [[ "$status" = "charging" ]]; then
+	remaining=""
+	status="chg"
+else
+	statusColour=$healthy
+	status="⚡"
+fi
+
+echo " $capacity% $status $remaining up$up  "

@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# Lower the screen brightness in arbitrary steps.
+
+curBrightness=`xrandr --verbose | grep -m 1 -i brightness | cut -f2 -d ' '`
+s="xrandr --output eDP-1 --brightness "
+
+case $curBrightness in
+"0.30")
+	$s 1.0
+	;;
+"1.0")
+	$s 0.9
+	;;
+"0.90")
+	$s 0.8
+	;;
+"0.80")
+	$s 0.63
+	;;
+"0.63")
+	$s 0.5
+	;;
+"0.50")
+	$s 0.45
+	;;
+"0.45")
+	$s 0.4
+	;;
+"0.40")
+	$s 0.35
+	;;
+"0.35")
+	$s 0.3
+	;;
+esac
+
+# Uncomment htese if you want a reading of your currently set brightness.
+#curBrightness=`xrandr --verbose | grep -m 1 -i brightness | cut -f2 -d ' '`
+#echo "brightness: $curBrightness"
+

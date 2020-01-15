@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Lock screen via xlock and go to sleep.
+# This needs a sudo rule to allow that for your user.
+sleep 2 && /usr/local/bin/sudo /usr/sbin/zzz &
+xlock
+

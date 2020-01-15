@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Delete logs and coredumps in $HOME. Who looks at these anyways?
+rm -f ~/*.log *.core
